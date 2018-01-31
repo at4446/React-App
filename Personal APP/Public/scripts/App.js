@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -18,23 +18,15 @@ var Header = function (_React$Component) {
   }
 
   _createClass(Header, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       var options = [1, 2, 3, 4, 5, 6];
-      return options.map(function (object, i) {
-        return React.createElement(
-          'div',
-          null,
-          React.createElement(
-            'p',
-            { key: i },
-            ' Amiar+',
-            options[object],
-            ' '
-          ),
-          React.createElement(Action, { options: options })
-        );
-      });
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(Action, { options: options }),
+        React.createElement(Option, null)
+      );
     }
   }]);
 
@@ -51,27 +43,67 @@ var Action = function (_React$Component2) {
   }
 
   _createClass(Action, [{
-    key: 'render',
+    key: "Handlepick",
+    value: function Handlepick() {
+      alert("picked me");
+    }
+  }, {
+    key: "render",
     value: function render() {
-
       return React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(
-          'p',
+          "p",
           null,
           this.props.options.length
         ),
         React.createElement(
-          'button',
-          null,
-          ' What Should I do Now'
+          "button",
+          { onClick: this.Handlepick },
+          " What Should I do Now"
         )
       );
     }
   }]);
 
   return Action;
+}(React.Component);
+
+var Option = function (_React$Component3) {
+  _inherits(Option, _React$Component3);
+
+  function Option() {
+    _classCallCheck(this, Option);
+
+    return _possibleConstructorReturn(this, (Option.__proto__ || Object.getPrototypeOf(Option)).apply(this, arguments));
+  }
+
+  _createClass(Option, [{
+    key: "handleAddOption",
+    value: function handleAddOption(e) {
+      e.preventDefault();
+      var opt = e.target.elements.opt.value;
+      aler(opt);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "button",
+          { onClick: this.handleAddOption },
+          " add now"
+        ),
+        React.createElement("input", null)
+      );
+    }
+  }]);
+
+  return Option;
 }(React.Component);
 
 ReactDOM.render(React.createElement(Header, null), document.getElementById('app'));
