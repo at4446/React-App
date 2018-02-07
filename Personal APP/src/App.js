@@ -28,15 +28,21 @@ class Action extends React.Component {
 class Option extends React.Component {
   handleAddOption(e) {
     e.preventDefault();
-    const opt = e.target.elements.opt.value;
-    aler(opt);
+    var opt=e.target.elements.option.value;
+    if(opt){
+      alert(opt);
+    }
+    
   }
   render() {
 
       return (
           <div>
-              <button onClick={this.handleAddOption}> add now</button>
-              <input ></input>
+           <form onSubmit={this.handleAddOption}>
+           <button > add now</button>
+               <input type="text" name="option" />
+               
+            </form>
           </div>
     );
   }
